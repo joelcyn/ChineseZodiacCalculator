@@ -2,6 +2,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="jquery-1.11.1.min.js"></script>
+  <!-- script_zodiac.js contains Javascipt for this page -->
   <script src="script_zodiac.js"></script>
   <title>Chinese Zodiac Calculator</title>
 </head>
@@ -10,12 +11,14 @@
 			<p>
 				Chinese Zodiac Calculator
 			</p>
+      <!-- Image source : https://internchina.com/chinese-zodiac-animal-of-the-year-calculated-by-the-lunar-calendar/-->
  			<img id="zodiacImage" src="public/images/zodiac.png" width="400" height="400">
 		</h1>
 
 		<h2>
 			<p>
  	 			<form>
+          <!-- Customization, possibility to enter name or leave it blank -->
   				First name:<br>
   				<input id="firstname" type="text" name="firstname"><br>
   				Last name:<br>
@@ -26,10 +29,12 @@
 
 
 <br>
+<!-- Enter your date of birth to know your chinese sign -->
 Select your date of birth :<br>
 Day :
  <select name="day" id="day"></select>
 
+<!-- Loop for the days -->
 <script>
 var startDay = 1;
 var endDay = 31;
@@ -40,6 +45,7 @@ for(var d = startDay ; d <= endDay; d++){
 document.getElementById("day").innerHTML = optionsDay;
 </script>
 
+<!-- Options for the months -->
 <select name="month" id="month">
   <option value="1">January</option>
   <option value="2">February</option>
@@ -58,7 +64,7 @@ document.getElementById("day").innerHTML = optionsDay;
 <select name="year" id="year">
 
 </select>
-
+<!-- Loop for the year, fron 1900 to current year -->
 <script>
 var startYear = 1900;
 var endYear = new Date().getFullYear();

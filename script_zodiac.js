@@ -1,25 +1,9 @@
-// Configuration de la base de données MongoDB.
-// var mongoose = require('mongoose');
-// var utilisateur = 'joel';
-// var mdp = 'joel@ds051534';
-// var adresse = '.mongolab.com:51534/les-grottes-de-kalte';
-// mongoose.connect('mongodb://' + utilisateur + ':' + mdp + adresse);
-
-
-
-
 function scriptButton() {
-    //window.alert(firstname.value +" is a boss");
 
-    console.log("Le prenom est " + firstname.value);
-    console.log("Le nom est " + lastname.value);
 
-    console.log("jour : " + day.value);
-    console.log("mois : " + month.value);
-    console.log("annee : " + year.value);
     var birthdayM = month.value;
     var birthdayD = day.value;
-
+    //Formatting to get a date as YYYYMMDD
     if(birthdayM<10)
     {
       birthdayM = "0" + month.value;
@@ -29,8 +13,8 @@ function scriptButton() {
       birthdayD = "0" + day.value;
     }
     var birthday = year.value + birthdayM + birthdayD;
-    console.log("birthday : " + birthday);
 
+    //Array to match first day of the chinese year, which sign it is and its element
     var signs =
     [["20990121", "goat", "earth"],
     ["20980201", "horse", "earth"],
@@ -234,6 +218,7 @@ function scriptButton() {
     ["19000131", "rat", "metal"],
     ["19000000", "pig", "earth"]];
 
+    //Description for each signs, sources from the site below
     //https://www.travelchinaguide.com/intro/social_customs/zodiac/
     //sign/description/strength/weakness
     var signsDescription =
@@ -250,6 +235,7 @@ function scriptButton() {
     ["dog","They are usually independent, sincere, loyal and decisive according to Chinese zodiac analysis. They are not afraid of difficulties in daily life. These shining characteristics make them have harmonious relationship with people around.","Valiant, loyal, responsible, clever, courageous, lively","Sensitive, conservative, stubborn, emotional"],
     ["pig","People with Chinese zodiac sign Pig are considerate, responsible, independent and optimistic. They always show generousness and mercy to endure other people's mistakes, which help them gain harmonious interpersonal relationship. However, sometimes they would behave lazy and lack actions. In addition, pure hearts would let them be cheated easily in daily life.","Warm-hearted, good-tempered, loyal, honest, gentle","Naive, gullible, sluggish, short-tempered"]];
 
+    //Description for the elements, sources from the site below
     //http://www.yourchineseastrology.com/five-elements.htm
     var elementsDescription =
     [["wood","Exceptionally gifted, Idealists, Planner, Owl"],
@@ -258,6 +244,7 @@ function scriptButton() {
     ["earth","Kindness, Tolerant, Honest, Leader, Peacock"],
     ["metal","Determined, Persistent, Workaholic, Manager, Tiger"]];
 
+    //Loop to know the sign and the element, considering the birthday
     var birthdaySign = "";
     var birthdayElement = "";
     for (var yearIndex = 0; yearIndex <signs.length; yearIndex++)
@@ -270,11 +257,12 @@ function scriptButton() {
         }
 
     }
-    console.log("birthdaySign : " + birthdaySign);
+    //Change of the image, to get a highlighted version on the sign
     var zodiacImage = "public/images/zodiac_" + birthdaySign + ".png";
     document.getElementById("zodiacImage").src= zodiacImage;
     var answer = "";
     var nameTyped = false;
+    //Usecase : entry or not of the name, formatting
     if (firstname.value != "")
     {
       answer += firstname.value + " ";
@@ -289,6 +277,7 @@ function scriptButton() {
     {
       answer += ",";
     }
+    //Update of the answer shown to the browser
     answer += "your Chinese Sign is " + birthdaySign + " of " + birthdayElement + " !";
     document.getElementById("answer").innerHTML = answer;
 }
